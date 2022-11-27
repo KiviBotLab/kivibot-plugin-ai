@@ -1,8 +1,10 @@
 {
   "name": "kivibot-plugin-ai",
-  "version": "0.1.0",
-  "description": "KiviBot QQ 机器人框架的小爱同学插件",
+  "version": "2.1.0",
+  "description": "QQ 机器人框架 KiviBot 的小爱同学插件",
   "main": "index.js",
+  "repository": "KiviBotLab/kivibot-plugin-ai",
+  "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
   "files": [
     "index.js"
   ],
@@ -10,7 +12,6 @@
     "kivibot",
     "kivibot-plugin"
   ],
-  "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
   "license": "MIT",
   "devDependencies": {
     "@kivibot/core": "^0.2.2",

@@ -2,7 +2,7 @@ const { KiviPlugin, segment } = require('@kivibot/core')
 const { default: axios } = require('axios')
 const { nanoid } = require('nanoid')
 
-const plugin = new KiviPlugin('小爱同学', '2.0.0')
+const plugin = new KiviPlugin('小爱同学', '2.1.0')
 
 const config = {
   // 回复模式，默认文本 text，语音改为 audio，需要配置 ffmpeg
@@ -28,7 +28,7 @@ async function fetchReply(text) {
 
 plugin.onMounted(() => {
   plugin.onMessage(async event => {
-    const { reply, message_type, sender } = event
+    const { message_type, sender } = event
 
     if (config.missWords.some(word => event.toString().search(word) !== -1)) {
       return
@@ -46,20 +46,28 @@ plugin.onMounted(() => {
       const isDiscussMiss = config.missGroups.includes(event?.discuss_id)
       const isGroupMiss = config.missGroups.includes(event?.group_id)
 
-      if (isDiscussMiss || isGroupMiss) {
+      if (isDiscussMiss || isGroupMiss || !event.atme) {
         return
       }
     }
 
-    const rawText = event.toString().replace(/\{.*\}/g, '')
+    const rawText = event
+      .toString()
+      .replace(/\{.*\}/g, '')
+      .trim()
+
     const { url, displayText } = await fetchReply(rawText)
 
     const isAudio = config.mode === 'audio'
 
-    if (isAudio) {
-      reply(url ? segment.record(url) : '让小爱思考一下')
-    } else {
-      reply(displayText || '让小爱思考一下')
+    try {
+      if (isAudio) {
+        event.reply(url ? segment.record(url) : '让小爱思考一下')
+      } else {
+        event.reply(displayText || '让小爱思考一下')
+      }
+    } catch (e) {
+      console.error(e)
     }
   })
 })

@@ -2,7 +2,7 @@
   "name": "kivibot-plugin-ai",
   "version": "2.2.0",
   "description": "QQ 机器人框架 KiviBot 的小爱同学插件",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "KiviBotLab/kivibot-plugin-ai",
   "homepage": "https://github.com/KiviBotLab/kivibot-plugin-ai#readme",
   "author": "Viki <hi@viki.moe> (https://github.com/vikiboss)",
@@ -13,7 +13,7 @@
     "release": "tsc && pnpm publish"
   },
   "files": [
-    "index.js"
+    "lib"
   ],
   "keywords": [
     "kivibot",

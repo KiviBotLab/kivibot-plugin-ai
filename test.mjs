@@ -1,5 +1,6 @@
 import test from 'ava'
-import { fetchReply } from './index.js'
+
+import { fetchReply } from './lib/fetchReply.js'
 
 test('fetchReply', async t => {
   const { url, displayText } = await fetchReply('你好')

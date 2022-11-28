@@ -82,4 +82,4 @@ plugin.onMounted(() => {
   })
 })
 
-export default plugin
+export { plugin }

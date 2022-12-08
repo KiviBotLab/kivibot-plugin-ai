@@ -1,5 +1,5 @@
 import { customAlphabet } from 'nanoid'
-import axios from 'axios'
+import { http } from '@kivibot/core'
 
 const nanoid = customAlphabet('0123456789abcdef', 4)
 
@@ -12,7 +12,7 @@ export async function fetchReply(text: string) {
     userId: `${nanoid(8)}-${nanoid()}-${nanoid()}-${nanoid()}-${nanoid(8)}`
   }
 
-  const { data } = await axios.post(api, { requestText: text }, { params })
+  const { data } = await http.post(api, { requestText: text }, { params })
 
   return data?.directive ?? {}
 }

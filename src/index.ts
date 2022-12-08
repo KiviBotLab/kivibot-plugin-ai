@@ -1,7 +1,7 @@
 import { KiviPlugin, segment } from '@kivibot/core'
 import { fetchReply } from './fetchReply'
 
-const plugin = new KiviPlugin('小爱同学', '2.4.0')
+const plugin = new KiviPlugin('小爱同学', '2.4.1')
 
 const config = {
   /** 回复模式，默认文本 text，语音改为 audio，需要配置 ffmpeg */

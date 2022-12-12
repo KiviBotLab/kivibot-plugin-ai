@@ -1,41 +1,62 @@
-# 小爱同学
+# 小爱同学 for KiviBot
 
-`KiviBot` 小爱同学插件。
+![npm (scoped)](https://img.shields.io/npm/v/kivibot-plugin-ai?color=527dec&label=kivibot-plugin-ai&style=flat-square)
+[![dm](https://shields.io/npm/dm/kivibot-plugin-ai?style=flat-square)](https://www.npmjs.com/package/kivibot-plugin-ai)
+
+`KiviBot` 的 [小爱同学](https://xiaoai.mi.com/) 插件，数据来源于小爱同学官方接口，详情查看[源码](https://github.com/KiviBotLab/kivibot-plugin-ai/blob/main/src/fetchReply.ts#L7)。
 
 **安装**
 
-使用框架消息指令安装小爱同学。
-
 ```shell
-/plugin add ai # 等待安装完成
+/plugin add ai
 ```
 
 **启用**
-
-使用框架消息指令启用小爱同学。
 
 ```shell
 /plugin on ai
 ```
 
+**使用**
+
+```shell
+小爱在吗
+@Bot 现在几点了
+小爱同学今天是星期几
+```
+
 **配置**
 
-编辑 `data/plugins/小爱同学/config.json` 文件，修改后保存，重载插件（`/plugin reload ai`）即可生效。
+编辑 `框架目录/data/plugins/小爱同学/config.json` 文件
 
 > 注意：配置中不能带有注释，此处注释仅用作解释说明。
 
 ```jsonc
-// `data/plugins/小爱同学/config.json` 文件内容
+// `框架目录/data/plugins/小爱同学/config.json` 文件内容
 {
-  /** 回复模式，默认文本 text，语音改为 audio，需要配置 ffmpeg */
+  /** 回复模式，默认文本 text，语音改为 audio，语音需要配置 ffmpeg */
   "mode": "text",
-  /** 忽略群 */
-  "missGroups": [],
-  /** 私聊是否开启，默认开启 */
+  /** 触发词列表，仅群聊生效 */
+  "words": ["小爱"],
+  /** 是否开启艾特触发，默认开启，仅群聊生效 */
+  "enableAt": true,
+  /** 私聊是否开启，默认开启，开启后无需任何触发词即可触发 */
   "enablePrivate": true,
-  /** 强制忽略词，支持正则匹配 */
-  "missWords": ["#", "自爆", "同归于尽"],
+  /** API 请求错误时的回复 */
+  "errorReply": "让小爱思考一下再给你答复吧",
   /** 是否屏蔽管理员私聊，默认屏蔽（防止消息命令误触） */
-  "ignoreAdmin": true
+  "ignoreAdmin": true,
+  /** 忽略群列表 */
+  "ignoreGroups": [],
+  /** 忽略好友列表，群聊私聊均会忽略，填入 QQ 列表，这里默认忽略 Q 群管家 */
+  "ignoreFriends": [2854196310],
+  /** 强制忽略词列表 */
+  "ignoreWords": ["#", "/", "自爆", "同归于尽"]
 }
+```
+
+修改后保存，使用以下命令重载插件即可生效。
+
+```shell
+/plugin reload ai
 ```

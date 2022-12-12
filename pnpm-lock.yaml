@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@kivibot/core': latest
+  '@types/node': ^18.11.13
   ava: ^5.1.0
   nanoid: ^3
   typescript: ^4.9.3
@@ -10,7 +11,8 @@ dependencies:
   nanoid: 3.3.4
 
 devDependencies:
-  '@kivibot/core': 0.5.1
+  '@kivibot/core': 0.6.1
+  '@types/node': 18.11.13
   ava: 5.1.0
   typescript: 4.9.3
 
@@ -20,8 +22,8 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
 
-  /@kivibot/core/0.5.1:
-    resolution: {integrity: sha512-DzU+SPL9ry7NhfYTkdjQNwce6F05otRnL3SyeCQw58zszyIbaxcXXz946qeRD2eM5wY73DMLVO+K1/fhwr1wlw==}
+  /@kivibot/core/0.6.1:
+    resolution: {integrity: sha512-nuMc6wAnec4LQXxLR9qskJjs+aBGNJd8Cx7ey4K8vbJg90icAAznJSFPVzsL7D9qXAzpdhgmG5EQMdGbll+INg==}
     engines: {node: '>= v14'}
     dependencies:
       axios: 1.2.1
@@ -172,6 +174,10 @@ packages:
 
   /@types/http-cache-semantics/4.0.1:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
+    dev: true
+
+  /@types/node/18.11.13:
+    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
     dev: true
 
   /abbrev/1.1.1:

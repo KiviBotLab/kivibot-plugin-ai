@@ -1,4 +1,4 @@
-import { KiviPlugin, segment, wait } from '@kivibot/core'
+import { KiviPlugin, segment, randomInt, wait } from '@kivibot/core'
 
 import { fetchReply } from './fetchReply'
 
@@ -16,7 +16,7 @@ const config = {
   /** 私聊是否开启，默认开启，开启后无需任何触发词即可触发 */
   enablePrivate: true,
   /** 随机发送延迟的区间，单位毫秒，无延迟都设置为 0 */
-  deplay: [300, 3000],
+  deplay: [300, 3000] as const,
   /** API 请求错误时的回复 */
   errorReply: '让小爱思考一下再给你答复吧',
   /** 是否屏蔽管理员私聊，默认屏蔽（防止消息命令误触） */
@@ -28,9 +28,6 @@ const config = {
   /** 强制忽略词列表 */
   ignoreWords: ['#', '/', '自爆', '同归于尽']
 }
-
-/** 随机数函数 */
-const random = (min = 0, max = 1) => Math.floor(Math.random() * (max - min + 1)) + min
 
 plugin.onMounted(() => {
   // 使用插件数据配置文件合并配置，优先使用：框架目录/data/plugins/小爱同学/config.json
@@ -86,7 +83,7 @@ plugin.onMounted(() => {
 
       // 随机延迟
       if (config.deplay && config.deplay[0] > 0) {
-        await wait(random(...config.deplay))
+        await wait(randomInt(...config.deplay))
       }
 
       // 分模式发送
@@ -96,7 +93,7 @@ plugin.onMounted(() => {
         event.reply(displayText || config.errorReply, true)
       }
     } catch (e) {
-      console.error(e)
+      plugin.logger.error(e)
       event.reply(config.errorReply, true)
     }
   })

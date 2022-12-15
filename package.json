@@ -1,7 +1,7 @@
 {
   "name": "kivibot-plugin-ai",
-  "version": "2.6.0",
-  "description": "QQ 机器人框架 KiviBot 的小爱同学插件",
+  "version": "2.7.0",
+  "description": "QQ 机器人框架 KiviBot 的小爱同学插件，接入小爱同学实现智能聊天功能，支持文字、语音回复，多种触发方式",
   "main": "lib/index.js",
   "repository": "KiviBotLab/kivibot-plugin-ai",
   "homepage": "https://github.com/KiviBotLab/kivibot-plugin-ai#readme",

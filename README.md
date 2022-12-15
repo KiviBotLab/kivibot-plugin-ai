@@ -1,9 +1,19 @@
 # 小爱同学 for KiviBot
 
-![npm (scoped)](https://img.shields.io/npm/v/kivibot-plugin-ai?color=527dec&label=kivibot-plugin-ai&style=flat-square)
-[![dm](https://shields.io/npm/dm/kivibot-plugin-ai?style=flat-square)](https://www.npmjs.com/package/kivibot-plugin-ai)
+[![npm-version](https://img.shields.io/npm/v/kivibot-plugin-ai?color=527dec&label=kivibot-plugin-ai&style=flat-square)](https://npm.im/kivibot-plugin-ai)
+[![dm](https://shields.io/npm/dm/kivibot-plugin-ai?style=flat-square)](https://npm.im/kivibot-plugin-ai)
 
-`KiviBot` 的 [小爱同学](https://xiaoai.mi.com/) 插件，数据来源于小爱同学官方接口，详情查看[源码](https://github.com/KiviBotLab/kivibot-plugin-ai/blob/main/src/fetchReply.ts#L7)。
+[`KiviBot`](https://beta.kivibot.com) 的 [小爱同学](https://xiaoai.mi.com/) 插件，接入小爱同学实现智能聊天功能。数据来源于小爱同学官方接口，详情查看[源码](https://github.com/KiviBotLab/kivibot-plugin-ai/blob/main/src/fetchReply.ts#L7)。
+
+**特征**
+
+- 接入小爱同学官方接口，稳定不失效
+- 无需配置开发者鉴权 key，安装即用
+- 支持语音回复和文字回复，任你选择
+- 支持艾特触发、配置关键词触发
+- 支持配置忽略词、屏蔽群和屏蔽 QQ
+
+> 语音模式需要安装 [ffmpeg](https://ffmpeg.org/)
 
 **安装**
 

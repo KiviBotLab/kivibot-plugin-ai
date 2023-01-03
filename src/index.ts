@@ -36,7 +36,7 @@ plugin.onMounted(() => {
   // 保存合并的配置
   plugin.saveConfig(config)
 
-  plugin.onMessage(async event => {
+  plugin.onMessage(async (event, bot) => {
     const { message_type, raw_message: msg, sender } = event
 
     // 检测到强制忽略词则忽略
@@ -59,10 +59,10 @@ plugin.onMounted(() => {
       }
     } else if (message_type === 'discuss') {
       isIgnore = config.ignoreGroups.includes(event.discuss_id)
-      hitAt = config.enableAt && event.atme
+      hitAt = config.enableAt && event.message.some(e => e.type === 'at' && e.qq === bot.uin)
     } else if (message_type === 'group') {
       isIgnore = config.ignoreGroups.includes(event.group_id)
-      hitAt = config.enableAt && event.atme
+      hitAt = config.enableAt && event.message.some(e => e.type === 'at' && e.qq === bot.uin)
     }
 
     const hitWords = config.words.some(e => msg.includes(e))

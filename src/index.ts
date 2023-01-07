@@ -29,7 +29,7 @@ const config = {
   ignoreWords: ['#', '/', '自爆', '同归于尽']
 }
 
-plugin.onMounted(() => {
+plugin.onMounted((bot, admins) => {
   // 使用插件数据配置文件合并配置，优先使用：框架目录/data/plugins/小爱同学/config.json
   Object.assign(config, plugin.loadConfig())
 
@@ -38,6 +38,11 @@ plugin.onMounted(() => {
 
   plugin.onMessage(async (event, bot) => {
     const { message_type, raw_message: msg, sender } = event
+
+    // 屏蔽管理员私聊，防止消息命令误触
+    if (config.ignoreAdmin && plugin.admins.includes(sender.user_id)) {
+      return
+    }
 
     // 检测到强制忽略词则忽略
     if (config.ignoreWords.some(word => msg.includes(word))) {
